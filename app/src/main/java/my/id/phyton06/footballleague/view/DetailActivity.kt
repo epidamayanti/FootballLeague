@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import my.id.phyton06.footballleague.R.color.colorLine
+import my.id.phyton06.footballleague.common.Utils
 
 class DetailActivity : AppCompatActivity() {
 
@@ -40,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
 
         detailUI.btnMatch.setOnClickListener {
             val i = Intent(this, MatchActivity::class.java)
-            i.putExtra("id", it.id)
+            Utils.idLeague = intent.getIntExtra("id", 0)
             startActivity(i)
         }
     }
@@ -54,10 +55,9 @@ class DetailActivity : AppCompatActivity() {
         @SuppressLint("SetTextI18n")
         override fun createView(ui: AnkoContext<DetailActivity>) = with(ui) {
             scrollView {
+                backgroundColor = Color.rgb(149,228,65)
                 verticalLayout{
                     padding = dip(16)
-                    backgroundColor = Color.LTGRAY
-
                     image = imageView{
                     }.lparams(width = wrapContent, height = dip(230)){
                         topMargin = dip(5)
@@ -109,7 +109,8 @@ class DetailActivity : AppCompatActivity() {
                         textColor = Color.WHITE
                         textSize = 14f
                         text = "MATCH SCHEDULE"
-                        backgroundColor = Color.BLUE
+                        backgroundColor = Color.rgb(30,112,33)
+
                     }.lparams(width = matchParent, height = wrapContent){
                         bottomMargin = dip(8)
                         topMargin = dip(5)

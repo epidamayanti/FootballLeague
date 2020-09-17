@@ -1,7 +1,9 @@
 package my.id.phyton06.footballleague.model
 
-data class ResponPrevMatch (
-    val idEvent : String,
+import com.fasterxml.jackson.annotation.JsonProperty
+
+data class DataMatch (
+    @JsonProperty("idEvent") val idEvent : String,
     val idAPIfootball : String,
     val strEvent : String,
     val idLeague : String,
@@ -13,7 +15,7 @@ data class ResponPrevMatch (
     val intHomeScore : Int,
     val intRound : Int,
     val intAwayScore : Int,
-    val strHomeGoalDetails : String,
+    @JsonProperty("strHomeGoalDetails")  val strHomeGoalDetails : String,
     val strHomeRedCards	 : String,
     val strHomeYellowCards : String,
     val strHomeLineupGoalkeeper : String,
@@ -24,7 +26,7 @@ data class ResponPrevMatch (
     val strHomeFormation : String,
     val strAwayRedCards : String,
     val strAwayYellowCards : String,
-    val strAwayGoalDetails : String,
+    @JsonProperty("strAwayGoalDetails") val strAwayGoalDetails : String,
     val strAwayLineupGoalkeeper	 : String,
     val strAwayLineupDefense : String,
     val strAwayLineupMidfield : String,

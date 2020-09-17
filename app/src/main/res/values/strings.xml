@@ -4,7 +4,7 @@
     <string name="prev">Pertandingan Terakhir</string>
     <string name="next">Pertandingan Mendatang</string>
 
-    <string-array name="club_id">
+    <integer-array name="club_id">
         <item>4356</item>
         <item>4346</item>
         <item>4396</item>
@@ -15,7 +15,7 @@
         <item>4344</item>
         <item>4330</item>
         <item>4335</item>
-    </string-array>
+    </integer-array>
 
     <string-array name="club_name">
         <item>Australian A League</item>
@@ -57,4 +57,6 @@
     </array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tidak_ada_events">TIDAK ADA EVENTS</string>
+    <string name="match">MATCH</string>
 </resources>

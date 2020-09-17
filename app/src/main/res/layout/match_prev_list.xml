@@ -3,32 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContainer"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:elevation="4dp">
+        android:layout_height="150dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="3"
-                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/homeNameTv"
+
+                <ImageView
+                    android:id="@+id/homeNameIv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.7"
+                    android:padding="5dp"
+                    android:src="@drawable/home" />
+
+                <TextView
+                    android:textColor="@color/colorBlack"
+                    android:id="@+id/homeNameTv"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
                     tools:text="Real Madrid"/>
 
             </LinearLayout>
@@ -41,6 +55,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/homeScoreTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,6 +74,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/colorBlack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VS"
@@ -75,6 +91,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/awayScoreTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,21 +104,33 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="3"
-                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:layout_height="match_parent"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/awayNameTv"
+                <ImageView
+                    android:id="@+id/awayNameIv"
+                    android:padding="5dp"
+                    android:src="@drawable/away"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.7"/>
+                <TextView
+                    android:textColor="@color/colorBlack"
+                    android:id="@+id/awayNameTv"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
                     tools:text="Real Madrid"/>
+
             </LinearLayout>
         </LinearLayout>
 
         <TextView
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorBlack"
             android:id="@+id/dateScheduleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

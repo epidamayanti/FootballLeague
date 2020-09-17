@@ -1,19 +1,32 @@
 package my.id.phyton06.footballleague.view
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import my.id.phyton06.footballleague.view.fragment.NextMatchFragment
 import my.id.phyton06.footballleague.view.fragment.PrevMatchFragment
 import my.id.phyton06.footballleague.R
 import my.id.phyton06.footballleague.adapter.ViewPagerAdapter
+import my.id.phyton06.footballleague.common.LoadingAlert
+import my.id.phyton06.footballleague.common.RxBaseActivity
+import my.id.phyton06.footballleague.common.Utils
+import my.id.phyton06.footballleague.service.MatchService
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
-class MatchActivity : AppCompatActivity() {
+class MatchActivity : RxBaseActivity() {
 
     var bottomNavigationView: BottomNavigationView? = null
 
@@ -29,14 +42,14 @@ class MatchActivity : AppCompatActivity() {
         setContentView(R.layout.match_activity)
 
         //Initializing viewPager
-        viewPager = findViewById(R.id.viewpager) as ViewPager
+        viewPager = findViewById(R.id.viewpager)
 
         //Initializing the bottomNavigationView
-        bottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView!!.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.action_prev -> viewPager!!.setCurrentItem(0)
-                R.id.action_next -> viewPager!!.setCurrentItem(1)
+                R.id.action_prev -> viewPager!!.currentItem = 0
+                R.id.action_next -> viewPager!!.currentItem = 1
             }
             false
         }
@@ -58,23 +71,11 @@ class MatchActivity : AppCompatActivity() {
                 bottomNavigationView!!.menu.getItem(position).isChecked = true
                 prevMenuItem = bottomNavigationView!!.menu.getItem(position)
             }
-
             override fun onPageScrollStateChanged(state: Int) {}
         })
 
-        /*  //Disable ViewPager Swipe
-
-       viewPager.setOnTouchListener(new View.OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                return true;
-            }
-        });
-
-        */
         setupViewPager(viewPager!!)
+
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
@@ -85,6 +86,8 @@ class MatchActivity : AppCompatActivity() {
         adapter.addFragment(nextMatchFragment!!)
         viewPager.adapter = adapter
     }
+
+
 
 
 }

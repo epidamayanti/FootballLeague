@@ -10,6 +10,7 @@ android {
         applicationId "my.id.phyton06.footballleague"
         minSdkVersion 16
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
 
@@ -70,5 +71,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${okHttpVersion}"
 
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation 'joda-time:joda-time:2.10.6'
 
 }

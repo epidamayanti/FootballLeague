@@ -3,7 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGreenBg"
     tools:context=".view.fragment.NextMatchFragment">
+
+    <TextView
+        android:id="@+id/event_tv"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/tidak_ada_events"
+        android:textSize="@dimen/space_30sp"
+        android:gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/match_list"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="my.id.phyton06.footballleague" >
+    package="my.id.phyton06.footballleague">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup" >
-        <activity android:name=".view.MatchActivity" >
-        </activity>
+        tools:ignore="AllowBackup">
+        <activity android:name=".view.DetailMatchActivity"></activity>
+        <activity android:name=".view.MatchActivity"></activity>
         <activity android:name=".view.DetailActivity" />
-        <activity android:name=".view.MainActivity" >
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

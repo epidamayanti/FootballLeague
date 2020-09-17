@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/placeHolderCardView"
         android:layout_width="match_parent"
@@ -13,19 +15,23 @@
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="2dp"
         android:clipToPadding="false"
-        app:cardCornerRadius="4dp"
+        app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="1.0"
+        tools:targetApi="lollipop">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/colorGreenBg"
             android:layout_height="match_parent">
             <ImageView
+                android:src="@drawable/italian_serie_a"
                 android:padding="20dp"
                 android:id="@+id/itemImageView"
                 android:layout_width="match_parent"
@@ -43,10 +49,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="10dp"
+                android:padding="10dp"
                 android:gravity="center"
-                android:maxLines="1"
-                android:textColor="#000000"
+                android:textColor="@color/colorBlack"
                 android:textSize="16sp"
+                android:text="LA LIGA 2"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
