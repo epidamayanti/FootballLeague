@@ -15,7 +15,7 @@ class Utils {
         const val NEXT_MATCH_ENDPOINT = "eventsnextleague.php?"
         const val PREV_MATCH_ENDPOINT = "eventspastleague.php?"
         const val MATCH_DETAIL_ENDPOINT = "lookupevent.php?"
-        const val SEARCH_MATCH_ENDPOINT = "searchevents.php?e={query}"
+        const val SEARCH_MATCH_ENDPOINT = "searchevents.php?"
 
         var idLeague = 0
         var idEvent  = 0

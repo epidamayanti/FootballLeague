@@ -1,30 +1,19 @@
 package my.id.phyton06.footballleague.view
 
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.DialogInterface
+
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.match_activity.*
 import my.id.phyton06.footballleague.view.fragment.NextMatchFragment
 import my.id.phyton06.footballleague.view.fragment.PrevMatchFragment
 import my.id.phyton06.footballleague.R
 import my.id.phyton06.footballleague.adapter.ViewPagerAdapter
-import my.id.phyton06.footballleague.common.LoadingAlert
 import my.id.phyton06.footballleague.common.RxBaseActivity
-import my.id.phyton06.footballleague.common.Utils
-import my.id.phyton06.footballleague.service.MatchService
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-
 
 class MatchActivity : RxBaseActivity() {
 
@@ -53,6 +42,7 @@ class MatchActivity : RxBaseActivity() {
             }
             false
         }
+
         viewPager?.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,

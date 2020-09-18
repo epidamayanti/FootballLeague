@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.list_detail_match.view.*
-import my.id.phyton06.footballleague.R.layout.list_detail_match
+import kotlinx.android.synthetic.main.item_detail_match.view.*
+import my.id.phyton06.footballleague.R.layout.item_detail_match
 import my.id.phyton06.footballleague.model.DataDetailMatch
 
 class DetailMatchAdapter(private val context: Context, private val items: List<DataDetailMatch>)
     : RecyclerView.Adapter<DetailMatchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(LayoutInflater.from(context).inflate(list_detail_match, parent, false))
+        ViewHolder(LayoutInflater.from(context).inflate(item_detail_match, parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(items[position])

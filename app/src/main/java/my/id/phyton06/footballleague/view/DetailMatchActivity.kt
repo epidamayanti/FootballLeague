@@ -45,6 +45,8 @@ class DetailMatchActivity : RxBaseActivity() {
 
         initDataMatch()
 
+        listDetailMatch.addAll(DataDetailMatch.getData())
+        match_list_detail.adapter = DetailMatchAdapter(this, listDetailMatch)
     }
 
     @SuppressLint("SetTextI18n")
@@ -65,12 +67,9 @@ class DetailMatchActivity : RxBaseActivity() {
                 awayScoreTv.text = ""+ resultMatch.intAwayScore
                 homeNameIv.text = ""+ resultMatch.strHomeTeam
                 awayNameIv.text = ""+ resultMatch.strAwayTeam
-                titleTv.text = ""+ resultMatch.strStatus
+                titleTv.text = ""+ (Utils.resultMatch?.strStatus?: "-")
                 date.text = ""+ resultMatch.dateEvent.substring(8, resultMatch.dateEvent.length)+ "-" +  resultMatch.dateEvent.substring(5,7) + "-" + resultMatch.dateEvent.substring(0,4)
                 time.text = ""+convertDate(resultMatch.strTimestamp)
-
-                 listDetailMatch.addAll(DataDetailMatch.getData())
-                 match_list_detail.adapter = DetailMatchAdapter(this, listDetailMatch)
 
             }) {
                     error ->
@@ -89,6 +88,7 @@ class DetailMatchActivity : RxBaseActivity() {
 
             }
         )
+
     }
 
     private fun convertDate(timeStamp: String):String{

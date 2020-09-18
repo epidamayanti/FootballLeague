@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.DetailMatchActivity"></activity>
-        <activity android:name=".view.MatchActivity"></activity>
+        <activity android:name=".view.SearchActivity"></activity>
+        <activity android:name=".view.DetailMatchActivity" />
+        <activity android:name=".view.MatchActivity" />
         <activity android:name=".view.DetailActivity" />
         <activity android:name=".view.MainActivity">
             <intent-filter>

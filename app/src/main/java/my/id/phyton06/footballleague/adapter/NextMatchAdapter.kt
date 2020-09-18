@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.match_next_list.view.*
 import my.id.phyton06.footballleague.R.layout.match_next_list
-import my.id.phyton06.footballleague.model.DataItem
 import my.id.phyton06.footballleague.model.DataMatch
 import java.time.OffsetDateTime
 import java.time.ZoneId
@@ -39,12 +38,14 @@ class NextMatchAdapter(private val context: Context, private val items: List<Dat
 
         @SuppressLint("SetTextI18n")
         fun bindItem(items: DataMatch, listener: (DataMatch) -> Unit) {
-            val date = items.dateEvent.substring(8, items.dateEvent.length)+ "-" +  items.dateEvent.substring(5,7) + "-" + items.dateEvent.substring(0,4)
-            containerView.dateScheduleTv.text = date
-            containerView.homeNameTv.text = items.strHomeTeam
-            containerView.awayNameTv.text = items.strAwayTeam
-            containerView.timeScheduleTv.text = "" + convertDate(items.strTimestamp)
-            containerView.setOnClickListener { listener(items) }
+            if (items.strSport.contains("Soccer")) {
+                val date = items.dateEvent.substring(8, items.dateEvent.length) + "-" + items.dateEvent.substring(5, 7) + "-" + items.dateEvent.substring(0, 4)
+                containerView.dateScheduleTv.text = date
+                containerView.homeNameTv.text = items.strHomeTeam
+                containerView.awayNameTv.text = items.strAwayTeam
+                containerView.timeScheduleTv.text = "" + convertDate(items.strTimestamp)
+                containerView.setOnClickListener { listener(items) }
+            }
         }
 
         private fun convertDate(timeStamp: String):String{

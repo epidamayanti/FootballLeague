@@ -32,8 +32,12 @@ class MainActivity : AppCompatActivity() {
             i.putExtra("desc", it.desc)
             startActivity(i)
 
-            val toast = Toast.makeText(applicationContext, "Anda memilih "+it.id, Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(applicationContext, "Anda memilih "+it.name, Toast.LENGTH_SHORT)
             toast.show()
+        }
+
+        btn_search.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
         }
     }
 

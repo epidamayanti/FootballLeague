@@ -57,11 +57,18 @@
                 <TextView
                     android:gravity="center"
                     android:textColor="@color/colorBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/space_15sp"
+                    android:text="VS"/>
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
                     android:id="@+id/timeScheduleTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="2"
-                    android:textSize="20sp"
+                    tools:text="14:00"
+                    android:textSize="@dimen/space_20sp"
                     android:textStyle="bold"/>
 
             </LinearLayout>

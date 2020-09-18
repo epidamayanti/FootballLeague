@@ -52,6 +52,13 @@
 
                     </LinearLayout>
 
+                    <View
+                        android:background="@color/colorLine"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="@dimen/spacing_xxxlarge"
+                        android:layout_marginRight="@dimen/spacing_xxxlarge"
+                        android:layout_height="@dimen/spacing_small" />
+
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
@@ -71,7 +78,7 @@
 
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_height="153dp"
+                            android:layout_height="100dp"
                             android:layout_weight="0.3"
                             android:src="@drawable/trophy"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
@@ -103,8 +110,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                        android:textColor="@color/colorBlack" />
+                        android:text="12-09-2020"
+                        android:textSize="@dimen/space_10sp"/>
 
                     <TextView
                         android:paddingBottom="@dimen/spacing_medium"
@@ -112,7 +119,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="@dimen/space_25sp"
+                        android:textSize="@dimen/space_20sp"
                         android:textColor="@color/colorBlack" />
 
                 </LinearLayout>
@@ -158,7 +165,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textSize="@dimen/space_35sp"
+                    android:textSize="@dimen/space_25sp"
                     android:text="VS"
                     android:textColor="@color/colorBlack"
                     android:gravity="center"

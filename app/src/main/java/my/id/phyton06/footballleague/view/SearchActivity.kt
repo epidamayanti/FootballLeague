@@ -1,77 +1,79 @@
-package my.id.phyton06.footballleague.view.fragment
+package my.id.phyton06.footballleague.view
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_prev_match.*
+import kotlinx.android.synthetic.main.activity_search.*
 import my.id.phyton06.footballleague.R
-import my.id.phyton06.footballleague.adapter.PrevMatchAdapter
+import my.id.phyton06.footballleague.adapter.NextMatchAdapter
 import my.id.phyton06.footballleague.common.LoadingAlert
-import my.id.phyton06.footballleague.common.RxBaseFragment
+import my.id.phyton06.footballleague.common.RxBaseActivity
 import my.id.phyton06.footballleague.common.Utils
 import my.id.phyton06.footballleague.model.DataMatch
 import my.id.phyton06.footballleague.service.MatchService
-import my.id.phyton06.footballleague.view.DetailMatchActivity
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class PrevMatchFragment : RxBaseFragment() {
+class SearchActivity : RxBaseActivity() {
 
     private var loading: Dialog? = null
     private var itemsMatches: MutableList<DataMatch> = mutableListOf()
+    private var query: String = ""
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_prev_match, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_search)
+
+        loading = LoadingAlert.progressDialog(this, this)
+        match_result.layoutManager = LinearLayoutManager(this)
+
+        bt_back.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        bt_search.setOnClickListener {
+            query = et_search.text.toString()
+            initDataResult(query)
+        }
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        loading = LoadingAlert.progressDialog(this.context!!, this.requireActivity())
-        match_list.layoutManager = LinearLayoutManager(this.context)
-
-        initDataPrevMatch()
-    }
-
-    private fun initDataPrevMatch() {
+    private fun initDataResult(query: String) {
         loading?.show()
         subscriptions.add(provideService()
-            .previousMatch(Utils.idLeague)
+            .searchMatch(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                response ->
-                    loading?.dismiss()
-                    itemsMatches = response.events
-                    event_tv.visibility = View.GONE
-                    match_list.visibility = View.VISIBLE
-                    match_list.adapter = PrevMatchAdapter(this.requireContext(), itemsMatches) {
-                        Utils.idEvent = it.idEvent.toInt()
-                        startActivity(Intent(activity, DetailMatchActivity::class.java))
-                    }
-            }) {
-                    error ->
+            .subscribe(
+                {
+                    resp ->
+                        loading?.dismiss()
+                        itemsMatches = resp.event
+                        lyt_no_result.visibility = View.GONE
+                        match_result.visibility = View.VISIBLE
+                        match_result.adapter = NextMatchAdapter(this, itemsMatches) {
+                            Utils.idEvent = it.idEvent.toInt()
+                            startActivity(Intent(this, DetailMatchActivity::class.java))
+                        }
+            }
+            ) { error ->
                 loading?.dismiss()
                 if(error.cause.toString() == "null"){
-                    event_tv.visibility = View.VISIBLE
-                    match_list.visibility = View.GONE
+                    lyt_no_result.visibility = View.VISIBLE
+                    match_result.visibility = View.GONE
                 }
                 else {
-                    val builder = AlertDialog.Builder(this.context)
-                    builder.setMessage("PREV MATCH : "+error.localizedMessage)
+                    val builder = AlertDialog.Builder(this)
+                    builder.setMessage("SEARCH MATCH : "+error.localizedMessage)
                         .setPositiveButton(
                             "OK"
                         ) { dialog, which ->

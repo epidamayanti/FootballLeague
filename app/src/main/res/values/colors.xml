@@ -6,6 +6,9 @@
     <color name="colorLine">#E0E0E0</color>
     <color name="colorGreenBg">#95E441</color>
     <color name="colorBlack">#000000</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_40">#999999</color>
 
 
 </resources>
